@@ -1,22 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 :root {
   --card-transition: cubic-bezier(0.43, 0.13, 0.23, 0.96);
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(100%) rotate(90deg);
-  }
-  to {
-    transform: translateY(0) rotate(90deg);
-  }
+.card-enter {
+  clip-path: circle(0% at 100% 0%);
 }
 
-.text-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+.card-enter-active {
+  clip-path: circle(150% at 100% 0%);
+  transition: clip-path 0.8s var(--card-transition);
+}
+
+.card-exit {
+  clip-path: circle(150% at 100% 0%);
+}
+
+.card-exit-active {
+  clip-path: circle(0% at 100% 0%);
+  transition: clip-path 0.8s var(--card-transition);
+}
+
+/* Add these utility classes */
+.rounded-all {
+  border-radius: 32px;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 

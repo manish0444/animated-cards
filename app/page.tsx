@@ -5,6 +5,12 @@ import { CourseCard } from '@/components/course-card'
 
 export default function Page() {
   const [activeCard, setActiveCard] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState(0)
+
+  const handleCardClick = (index: number) => {
+    setPreviousIndex(activeCard)
+    setActiveCard(index)
+  }
 
   const cards = [
     {
@@ -25,7 +31,7 @@ export default function Page() {
   ]
 
   return (
-    <div className="min-h-screen bg-white p-8 font-sans">
+    <div className="min-h-screen bg-white p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl text-gray-900 mb-2">
           Explore our classes and master trending skills!
@@ -36,14 +42,15 @@ export default function Page() {
           <span role="img" aria-label="fire">🔥</span>
         </h2>
         
-        <div className="grid grid-cols-4 gap-6">
+        <div className="flex gap-6">
           {cards.map((card, index) => (
             <CourseCard
               key={index}
               isActive={activeCard === index}
-              onClick={() => setActiveCard(index)}
+              onClick={() => handleCardClick(index)}
               {...card}
               index={index}
+              previousIndex={previousIndex}
             />
           ))}
         </div>
