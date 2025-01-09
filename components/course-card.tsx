@@ -79,19 +79,39 @@ export function CourseCard({
         </AnimatePresence>
 
         <motion.div 
-          className={`flex flex-col h-full ${!isActive ? 'justify-center' : ''}`}
+          className={`flex flex-col h-full ${!isActive ? 'justify-between p-6' : ''}`}
           layout
         >
           <motion.div 
-            className={`flex items-baseline gap-1 ${
-              !isActive ? 'flex-col items-end' : ''
+            className={`flex flex-col gap-3 ${
+              !isActive ? 'rotate-[270deg] origin-top-left translate-y-[100%] -translate-x-2' : ''
             }`}
             layout
           >
-            <motion.div 
-              className={`flex items-baseline gap-1 ${
-                !isActive ? 'rotate-90 origin-right translate-x-1/2' : ''
+            <motion.h2 
+              className={`text-xl font-bold whitespace-nowrap ${
+                isActive ? 'text-white' : 'text-red-600'
               }`}
+              layout
+            >
+              {title}
+            </motion.h2>
+            <motion.p 
+              className={`text-sm leading-tight max-w-[200px] ${
+                isActive ? 'text-pink-100' : 'text-red-600/90'
+              }`}
+              layout
+            >
+              {description}
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className={`${!isActive ? 'self-end' : ''}`}
+            layout
+          >
+            <motion.div 
+              className="flex items-baseline"
               layout
             >
               <motion.span 
@@ -111,30 +131,6 @@ export function CourseCard({
                 +
               </motion.span>
             </motion.div>
-            
-            <motion.div 
-              className={`flex flex-col gap-2 ${
-                !isActive ? 'rotate-90 origin-left -translate-y-full mt-8' : ''
-              }`}
-              layout
-            >
-              <motion.h2 
-                className={`text-2xl font-bold ${
-                  isActive ? 'text-white' : 'text-red-600'
-                }`}
-                layout
-              >
-                {title}
-              </motion.h2>
-              <motion.p 
-                className={`text-sm leading-relaxed ${
-                  isActive ? 'text-pink-100' : 'text-red-600/90'
-                }`}
-                layout
-              >
-                {description}
-              </motion.p>
-            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -143,4 +139,3 @@ export function CourseCard({
     </motion.div>
   )
 }
-
